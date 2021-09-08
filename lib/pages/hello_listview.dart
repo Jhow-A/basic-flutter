@@ -29,9 +29,10 @@ class HelloListView extends StatelessWidget {
       Dog("Pastor", "assets/images/dog5.png")
     ];
 
-    return ListView.builder(
+    return GridView.builder(
       itemCount: dogs.length,
-      itemExtent: 300,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      // itemExtent: 300,
       itemBuilder: (context, index) {
         Dog dog = dogs[index];
 
@@ -51,7 +52,7 @@ class HelloListView extends StatelessWidget {
                 child: Text(
                   dog.nome,
                   style: const TextStyle(
-                    fontSize: 36,
+                    fontSize: 30,
                     color: Colors.white,
                   ),
                 ),
