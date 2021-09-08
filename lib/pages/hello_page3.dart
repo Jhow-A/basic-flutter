@@ -1,3 +1,4 @@
+import 'package:basic/widgets/blue_button.dart';
 import 'package:flutter/material.dart';
 
 class HelloPage3 extends StatelessWidget {
@@ -15,10 +16,9 @@ class HelloPage3 extends StatelessWidget {
 
   _body(context) {
     return Center(
-      child: ElevatedButton(
+      child: BlueButton(
+        'Voltar',
         onPressed: () => _onClickVoltar(context),
-        child: const Text('Voltar'),
-        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:basic/pages/hello_page1.dart';
 import 'package:basic/pages/hello_page2.dart';
 import 'package:basic/pages/hello_page3.dart';
+import 'package:basic/widgets/blue_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -55,27 +56,27 @@ class HomePage extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button(context, "ListView",
+            _button("ListView",
                 () => _onClickONavigate(context, const HelloPage1())),
-            _button(context, "Page 2",
-                () => _onClickONavigate(context, const HelloPage2())),
-            _button(context, "Page 3",
-                () => _onClickONavigate(context, const HelloPage3())),
+            _button(
+                "Page 2", () => _onClickONavigate(context, const HelloPage2())),
+            _button(
+                "Page 3", () => _onClickONavigate(context, const HelloPage3())),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _elevatedButton(context, "Snack", () => _onClickSnack),
-            _elevatedButton(context, "Dialog", () => _onClickDialog),
-            _elevatedButton(context, "Toast", () => _onClickToast)
+            BlueButton("Snack", onPressed: () => _onClickSnack),
+            BlueButton("Dialog", onPressed: () => _onClickDialog),
+            BlueButton("Toast", onPressed: () => _onClickToast)
           ],
         )
       ],
     );
   }
 
-  _button(BuildContext context, String text, onPressed) {
+  _button(String text, onPressed) {
     return RaisedButton(
       color: Colors.blue,
       child: Text(
@@ -86,21 +87,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-    );
-  }
-
-  _elevatedButton(BuildContext context, String text, Function() onPressed) {
-    return ElevatedButton(
-      style:
-          ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
-      onPressed: onPressed,
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-        ),
-      ),
     );
   }
 
