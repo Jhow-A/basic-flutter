@@ -18,15 +18,37 @@ class HomePage extends StatelessWidget {
         title: Text(title),
       ),
       body: _body(context),
+      drawer: Drawer(),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              _onClickFab();
+            },
+          ),
+          const SizedBox(
+            width: 10,
+            height: 10,
+          ),
+          FloatingActionButton(
+            child: const Icon(Icons.favorite),
+            onPressed: () {
+              _onClickFab();
+            },
+          ),
+        ],
+      ),
     );
   }
 
   _body(context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
       color: Colors.white,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           _text(),
           _pageView(),
@@ -142,9 +164,7 @@ class HomePage extends StatelessWidget {
             actions: [
               FlatButton(
                 child: const Text('Cancelar'),
-                onPressed: () => {
-                  Navigator.pop(context)
-                },
+                onPressed: () => {Navigator.pop(context)},
               ),
               TextButton(
                 child: const Text('OK'),
@@ -168,12 +188,13 @@ class HomePage extends StatelessWidget {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.blue,
         textColor: Colors.green,
-        fontSize: 30.0
-    );
+        fontSize: 30.0);
   }
 
   void _onClickONavigate(BuildContext context, Widget page) async {
     String? response = await push(context, page);
     print(response ?? 'Retorno nulo');
   }
+
+  void _onClickFab() {}
 }
