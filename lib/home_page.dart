@@ -3,6 +3,7 @@ import 'package:basic/pages/hello_page2.dart';
 import 'package:basic/pages/hello_page3.dart';
 import 'package:basic/utils/nav.dart';
 import 'package:basic/widgets/blue_button.dart';
+import 'package:basic/widgets/drawer_list.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
         title: Text(title),
       ),
       body: _body(context),
-      drawer: Drawer(),
+      drawer: const DrawerList(),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
