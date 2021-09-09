@@ -1,3 +1,5 @@
+import 'package:basic/pages/dog_page.dart';
+import 'package:basic/utils/nav.dart';
 import 'package:flutter/material.dart';
 
 class Dog {
@@ -59,7 +61,6 @@ class _HelloListViewState extends State<HelloListView> {
         itemCount: dogs.length,
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        // itemExtent: 300,
         itemBuilder: (context, index) {
           return _itemView(dogs, index);
         },
@@ -78,29 +79,34 @@ class _HelloListViewState extends State<HelloListView> {
   _itemView(List<Dog> dogs, int index) {
     Dog dog = dogs[index];
 
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        _img(dog.foto),
-        Align(
-          alignment: Alignment.bottomRight,
-          child: Container(
-            margin: const EdgeInsets.all(12),
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.black45,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-              dog.nome,
-              style: const TextStyle(
-                fontSize: 30,
-                color: Colors.white,
+    return GestureDetector(
+      onTap: () => {
+        push(context, DogPage(dog))
+      },
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          _img(dog.foto),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              margin: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.black45,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                dog.nome,
+                style: const TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
