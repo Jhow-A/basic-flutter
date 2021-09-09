@@ -4,6 +4,7 @@ import 'package:basic/pages/hello_page3.dart';
 import 'package:basic/utils/nav.dart';
 import 'package:basic/widgets/blue_button.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -71,7 +72,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               BlueButton("Snack", onPressed: () => _onClickSnack(context)),
               BlueButton("Dialog", onPressed: () => _onClickDialog(context)),
-              BlueButton("Toast", onPressed: () => _onClickToast)
+              BlueButton("Toast", onPressed: _onClickToast)
             ],
           )
         ],
@@ -159,7 +160,17 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _onClickToast() {}
+  _onClickToast() {
+    Fluttertoast.showToast(
+        msg: "Olá Flutter",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.blue,
+        textColor: Colors.green,
+        fontSize: 30.0
+    );
+  }
 
   void _onClickONavigate(BuildContext context, Widget page) async {
     String? response = await push(context, page);
